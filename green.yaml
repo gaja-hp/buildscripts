@@ -1,0 +1,23 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: nodejs
+spec:
+  replicas: 2
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 1
+  minReadySeconds: 5
+  template:
+    metadata:
+      labels:
+        app: nodeapp
+        version: 37
+    spec:
+      containers:
+        - name: front-end
+          image: 410602862282.dkr.ecr.us-east-2.amazonaws.com/demo-poc:nodejs-image-new-37
+          ports:
+            - containerPort: 5000

@@ -1,0 +1,11 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: my-service
+spec:
+  selector:
+    app: nodeapp
+    version: 36
+  type: LoadBalancer
+  ports:
+    - port: 5000
